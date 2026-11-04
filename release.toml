@@ -1,0 +1,24 @@
+name = "Bruma-Signs-SMIM-Patch"
+display_name = "Bruma Signs SMIM Patch"
+version = "1.0.0"
+description = "SMIM SE sign models for the seven Beyond Skyrim: Bruma shop and inn signs, rebuilt on SMIM SE 2.08."
+
+[files]
+"SMIM-Bruma-Patch.esp" = "build/SMIM-Bruma-Patch.esp"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumaacutabove01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumaacutabove01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumafightersguild01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumafightersguild01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumaicewindtraders01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumaicewindtraders01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumajerallviewinn01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumajerallviewinn01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumanorthernarms01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumanorthernarms01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumarestfulwatchman01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumarestfulwatchman01.nif"
+"meshes/bscyrodiil/clutter/signage/bruma/signbrumasynod01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumasynod01.nif"
+
+[nexus]
+mod_id = 0
+file_id = 0
+category = "main"
+archive_existing = true
+update_mod_version = true
+
+[github]
+repo = "kxgcayh/bruma-signs-smim-patch"

@@ -1,0 +1,8 @@
+build/
+dist/
+inputs/
+backups/
+.DS_Store
+*.zip
+__pycache__/
+NEXUS.txt
