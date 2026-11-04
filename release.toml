@@ -19,6 +19,7 @@ file_id = 0
 category = "main"
 archive_existing = true
 update_mod_version = true
+mod_category = 84  # Nexus mod category: Patches; written as category= in the github .meta
 
 [github]
 repo = "kxgcayh/bruma-signs-smim-patch"
