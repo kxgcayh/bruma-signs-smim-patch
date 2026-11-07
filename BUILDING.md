@@ -1,6 +1,6 @@
 # Building from source
 
-Back to [README.md](README.md). The technical notes are in [NOTES.md](NOTES.md).
+Back to [README.md](README.md).
 
 This repository contains no file from another mod: you supply them in `inputs/`, and `build.py` copies SMIM's two
 sign meshes, changes one texture path in each, and copies the plugin.
@@ -59,7 +59,6 @@ inputs.sha256         Hashes of the input files this was written against
 release.toml          Archive contents and release targets (workspace tools/mod-release)
 README.md             What the patch does, install, credits
 BUILDING.md           How to build from source
-NOTES.md              Technical notes
 LICENSE               MIT, for the code and documentation
 inputs/               Your copies of the original files (not tracked)
 build/, dist/         Generated (not tracked)

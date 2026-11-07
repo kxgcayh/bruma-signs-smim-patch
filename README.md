@@ -80,8 +80,7 @@ Read on 2026-11-05 from each page's Permissions section.
 ### Bruma Signs SMIM patch - SE
 - **Author:** Forzane. **Page:** [10924](https://www.nexusmods.com/skyrimspecialedition/mods/10924).
 - **Used:** the idea, the sign-to-base pairing, and `SMIM-Bruma-Patch.esp` (copied unchanged).
-- **Permissions:** none stated for its own files. Permission for the plugin has not been obtained; see NOTES.md,
-  Known Gaps.
+- **Permissions:** none stated for its own files. Permission for the plugin has not been obtained.
 
 ## License
 

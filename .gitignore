@@ -6,3 +6,5 @@ backups/
 *.zip
 __pycache__/
 NEXUS.txt
+NOTES.md
+docs/
