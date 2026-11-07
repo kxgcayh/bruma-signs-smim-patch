@@ -12,6 +12,8 @@ description = "SMIM SE sign models for the seven Beyond Skyrim: Bruma shop and i
 "meshes/bscyrodiil/clutter/signage/bruma/signbrumanorthernarms01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumanorthernarms01.nif"
 "meshes/bscyrodiil/clutter/signage/bruma/signbrumarestfulwatchman01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumarestfulwatchman01.nif"
 "meshes/bscyrodiil/clutter/signage/bruma/signbrumasynod01.nif" = "build/meshes/bscyrodiil/clutter/signage/bruma/signbrumasynod01.nif"
+"LICENSE" = "LICENSE"
+"THIRD-PARTY-NOTICES.txt" = "THIRD-PARTY-NOTICES.txt"
 
 [nexus]
 mod_id = 0

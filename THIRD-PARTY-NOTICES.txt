@@ -1,0 +1,25 @@
+Bruma Signs SMIM Patch - Third-party notices
+
+Bruma Signs SMIM Patch is licensed MIT (see LICENSE), which covers its scripts and documents only.
+The plugin and any other files in this package are derived from the mods below and stay under their authors' permissions.
+
+Read on 2026-11-05 from each page's Permissions section.
+
+Static Mesh Improvement Mod - SMIM
+- Author: Brumbek. Page: SMIM (https://www.nexusmods.com/skyrimspecialedition/mods/659).
+- Used: the two sign meshes above, with one texture path changed. No textures.
+- Permissions: asset use allowed without permission or credit; not in sold mods; not in mods earning Donation
+  Points without permission. Author notes: "users have permission to use SMIM assets freely in any mod. You can create
+  any compatibility patches or add-ons that you want using SMIM stuff."
+
+Beyond Skyrim - Bruma SE
+- Authors: The Beyond Skyrim - Cyrodiil Development Team. Page:
+  Bruma SE (https://www.nexusmods.com/skyrimspecialedition/mods/10917).
+- Used: BSHeartland.esm as a master and the paths of its sign textures. No Bruma files.
+- Author's instructions: "You are free and welcome to distribute addons and compatibility patches for Beyond
+  Skyrim: Bruma."
+
+Bruma Signs SMIM patch - SE
+- Author: Forzane. Page: 10924 (https://www.nexusmods.com/skyrimspecialedition/mods/10924).
+- Used: the idea, the sign-to-base pairing, and SMIM-Bruma-Patch.esp (copied unchanged).
+- Permissions: none stated for its own files. Permission for the plugin has not been obtained.
