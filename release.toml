@@ -1,6 +1,6 @@
 name = "Bruma-Signs-SMIM-Patch"
 display_name = "Bruma Signs SMIM Patch"
-version = "1.0.0"
+version = "1.1.0"
 description = "SMIM SE sign models for the seven Beyond Skyrim: Bruma shop and inn signs, rebuilt on SMIM SE 2.08."
 
 [files]

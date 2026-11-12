@@ -3,7 +3,8 @@
 Back to [README.md](README.md).
 
 This repository contains no file from another mod: you supply them in `inputs/`, and `build.py` copies SMIM's two
-sign meshes, changes one texture path in each, and copies the plugin.
+sign meshes and changes one texture path in each. The plugin is ours: `src/plugin/` (Spriggit YAML) is
+deserialized, round-tripped and checked.
 
 ## Platforms
 
@@ -16,13 +17,12 @@ AutoMod wrapper, not run.
 - Python 3.9+.
 - The [Skyrim AI toolkit](https://github.com/kxgcayh/skyrim-agents-toolkit) with AutoMod CLI v1.11.2 built and `nif-tool` placed (toolkit `docs/installing-tools.md`).
   Clone it next to this repo (or next to a parent folder), or set `SKYRIM_TOOLKIT` to its folder.
-- These three files in `inputs/` (create the folder):
+- These two files in `inputs/` (create the folder):
 
 | File in `inputs/` | Where it comes from |
 |---|---|
 | `signnightgateinn01.nif` | [SMIM](https://www.nexusmods.com/skyrimspecialedition/mods/659?tab=files&file_id=59069) SE 2.08, main file "SMIM SE 2-08" (file ID 59069), `06 Chains 3D - Signs/meshes/clutter/signage/inns/` in the archive |
 | `signrtbeeandbarb01.nif` | the same archive, `06 Chains 3D - Signs/meshes/clutter/signage/riften/` |
-| `SMIM-Bruma-Patch.esp` | [Bruma Signs SMIM patch - SE](https://www.nexusmods.com/skyrimspecialedition/mods/10924?tab=files&file_id=29422) 1, file "Bruma SE Signs SMIMmed" (file ID 29422), archive root |
 
 `build.py` checks each against `inputs.sha256` and stops on a missing or different file.
 
@@ -55,6 +55,7 @@ Nothing is uploaded without `--publish`.
 
 ```
 build.py              Build and checks
+src/plugin/           The plugin as Spriggit YAML (one override of BSHeartland 003AB2)
 inputs.sha256         Hashes of the input files this was written against
 release.toml          Archive contents and release targets (workspace tools/mod-release)
 README.md             What the patch does, install, credits

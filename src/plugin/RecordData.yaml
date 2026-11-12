@@ -1,0 +1,18 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: SMIM-Bruma-Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Stats:
+    Version: 1.7
+  Author: kautsaralbaa
+  Description: Keeps the Stone's Rest sign texture on SMIM's sign mesh. One override of BSHeartland 003AB2.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: BSHeartland.esm
+    FileSize: 0
+  INTV: 1

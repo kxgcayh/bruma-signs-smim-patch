@@ -21,5 +21,5 @@ Beyond Skyrim - Bruma SE
 
 Bruma Signs SMIM patch - SE
 - Author: Forzane. Page: 10924 (https://www.nexusmods.com/skyrimspecialedition/mods/10924).
-- Used: the idea, the sign-to-base pairing, and SMIM-Bruma-Patch.esp (copied unchanged).
-- Permissions: none stated for its own files. Permission for the plugin has not been obtained.
+- Used: the idea and the sign-to-base pairing. No file of this mod: the plugin is built from Beyond Skyrim - Bruma's
+  own record.

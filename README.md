@@ -1,13 +1,13 @@
 # Bruma Signs SMIM Patch
 
-**Version 1.0.0**
+**Version 1.1.0** (the plugin is now our own build from Bruma's record, ESL-flagged; meshes unchanged)
 
 Gives the seven shop and inn signs of **Beyond Skyrim: Bruma** the **Static Mesh Improvement Mod (SMIM)** sign models,
 rebuilt on the current SMIM SE meshes. It is an update of the 2017
 [Bruma Signs SMIM patch - SE](https://www.nexusmods.com/skyrimspecialedition/mods/10924) by Forzane, which shipped
 Oldrim-format copies of an older SMIM.
 
-Skyrim Special Edition and Anniversary Edition. Seven meshes and one plugin; no textures.
+Skyrim Special Edition and Anniversary Edition. Seven meshes and one ESL-flagged plugin; no textures.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ Skyrim Special Edition and Anniversary Edition. Seven meshes and one plugin; no 
 
 ### Target versions
 Built from SMIM SE 2.08 (file "SMIM SE 2-08", option `06 Chains 3D - Signs`) and checked against Beyond Skyrim - Bruma SE
-1.6.4 (`BSHeartland.esm`). If SMIM changes these two sign meshes, rebuild (see [BUILDING.md](BUILDING.md)).
+2.0.0 (`BSHeartland.esm`; 1.0.0 was checked against 1.6.4). If SMIM changes these two sign meshes, rebuild (see [BUILDING.md](BUILDING.md)).
 
 ## The Problem
 
@@ -54,7 +54,8 @@ See [BUILDING.md](BUILDING.md). The repository contains no file from another mod
 - All seven meshes are Special Edition format, have SMIM's block layout, differ from SMIM's mesh only in the
   `BSShaderTextureSet` block (every other block byte-identical), and pass AutoMod `nif verify`.
 - All seven Bruma sign textures exist in `BSHeartland - Textures.bsa`.
-- The plugin's record matches Bruma's except the alternate-texture 3D index (0 -> 1), and SMIM SE 2.08's
+- The plugin is built from Bruma 2.0.0's record (`src/plugin/`, Spriggit round trip, ESL flag, masters and the one
+  override checked by a separate parser); it matches Bruma's except the alternate-texture 3D index (0 -> 1), and SMIM SE 2.08's
   `SignWindpeakInn01.nif` has the `SignBanneredMare:29` shape at index 1.
 - **Not tested in game.** Bruma's sign boards are laid out for the vanilla sign face, as SMIM's are; that the
   pictures line up on SMIM's boards is the same assumption the 2017 patch made.
@@ -79,8 +80,9 @@ Read on 2026-11-05 from each page's Permissions section.
 
 ### Bruma Signs SMIM patch - SE
 - **Author:** Forzane. **Page:** [10924](https://www.nexusmods.com/skyrimspecialedition/mods/10924).
-- **Used:** the idea, the sign-to-base pairing, and `SMIM-Bruma-Patch.esp` (copied unchanged).
-- **Permissions:** none stated for its own files. Permission for the plugin has not been obtained.
+- **Used:** the idea and the sign-to-base pairing. No file of this mod: since 1.1.0 the plugin is our own `SMIM-Bruma-Patch.esp`, built from Bruma 2.0.0's record (`src/plugin/`); the 2017 plugin is no longer shipped or used.
+- **Permissions:** none stated for its own files (read 2026-11-13); 1.0.0 shipped its plugin unchanged without
+  permission, and that release was withdrawn.
 
 ## License
 

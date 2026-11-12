@@ -4,7 +4,7 @@
 The 2017 patch (Nexus 10924) ships LE-format (user_version_2 83, NiTriShape) copies of an old SMIM. This copies
 SMIM SE 2.08's own SSE meshes (BSTriShape) and swaps only the sign-face texture for Bruma's, with AutoMod
 `nif replace-textures`. The ESP (one MSTT override of BSHeartland 003AB2, CYRSignSnowStoneRest: alternate texture on
-3D index 1 of SMIM's SignWindpeakInn01) is still right for SMIM SE 2.08 and is copied unchanged.
+3D index 1 of SMIM's SignWindpeakInn01) is built from src/plugin (Bruma 2.0.0's record), ESL-flagged.
 
 Inputs: see BUILDING.md; `inputs.sha256` pins them. Output: build/ (packaged by release.py, see release.toml).
 Needs the Skyrim AI toolkit's AutoMod wrapper with nif-tool (SKYRIM_TOOLKIT, or a skyrim-agents-toolkit clone next to this repo or a parent folder).
@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import shutil
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -77,6 +78,50 @@ def automod(*args):
     return d["result"]["output"]
 
 
+def spriggit(verb, src, dst, *more):
+    r = subprocess.run(["bash", str(find_toolkit() / "tools/spriggit-cli.sh"), verb, "--InputPath", str(src),
+                        "--OutputPath", str(dst), *more], capture_output=True, text=True)
+    if r.returncode:
+        sys.exit(f"spriggit {verb} failed:\n{r.stdout}\n{r.stderr}")
+
+
+def check_plugin(b):  # independent of Spriggit: ESL flag, masters, one MSTT override of BSHeartland 003AB2
+    assert b[:4] == b"TES4", "not a plugin"
+    size, flags = struct.unpack_from("<I", b, 4)[0], struct.unpack_from("<I", b, 8)[0]
+    assert flags & 0x200, "ESL flag missing"
+    d, i, masters = b[24:24 + size], 0, []
+    while i < len(d):
+        t, n = d[i:i + 4], struct.unpack_from("<H", d, i + 4)[0]
+        if t == b"MAST":
+            masters.append(d[i + 6:i + 6 + n].rstrip(b"\0").decode("cp1252"))
+        i += 6 + n
+    assert masters == ["Skyrim.esm", "BSHeartland.esm"], masters
+    pos, recs = 24 + size, []
+    while pos < len(b):  # GRUP -> records
+        gsize = struct.unpack_from("<I", b, pos + 4)[0]
+        q = pos + 24
+        while q < pos + gsize:
+            rsize, fid = struct.unpack_from("<I", b, q + 4)[0], struct.unpack_from("<I", b, q + 12)[0]
+            recs.append((b[q:q + 4], fid))
+            q += 24 + rsize
+        pos += gsize
+    assert recs == [(b"MSTT", 0x01003AB2)], recs  # master index 1 = BSHeartland.esm: an override, no new form
+
+
+def build_plugin():
+    """SMIM-Bruma-Patch.esp from src/plugin (Bruma 2.0.0's record with the alternate texture on 3D index 1),
+    round-tripped through Spriggit and checked by check_plugin."""
+    esp = BUILD / ESP
+    spriggit("deserialize", HERE / "src/plugin", esp)
+    rt = BUILD / "rt"
+    spriggit("serialize", esp, rt, "--GameRelease", "SkyrimSE", "--PackageName", "Spriggit.Yaml.Skyrim",
+             "--PackageVersion", "0.41.0", "-u")
+    for f in (HERE / "src/plugin").rglob("*.yaml"):
+        assert (rt / f.relative_to(HERE / "src/plugin")).read_text() == f.read_text(), f"round trip changed {f.name}"
+    shutil.rmtree(rt)
+    check_plugin(esp.read_bytes())
+
+
 def main():
     check_inputs()
     if BUILD.exists():
@@ -92,7 +137,7 @@ def main():
         tex = automod("list-textures", str(dst)).lower()
         assert new.lower() in tex and old_tex.lower() not in tex, (name, tex)
         assert "1 passed, 0 failed" in automod("verify", str(dst)), name
-    shutil.copyfile(INPUTS / ESP, BUILD / ESP)
+    build_plugin()
     for p in sorted(BUILD.rglob("*")):
         if p.is_file():
             print(hashlib.sha256(p.read_bytes()).hexdigest()[:16], p.stat().st_size, p.relative_to(BUILD))
