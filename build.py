@@ -7,7 +7,7 @@ SMIM SE 2.08's own SSE meshes (BSTriShape) and swaps only the sign-face texture 
 3D index 1 of SMIM's SignWindpeakInn01) is still right for SMIM SE 2.08 and is copied unchanged.
 
 Inputs: see BUILDING.md; `inputs.sha256` pins them. Output: build/ (packaged by release.py, see release.toml).
-Needs the Skyrim AI toolkit's AutoMod wrapper with nif-tool (set SKYRIM_TOOLKIT if it is not at the default path).
+Needs the Skyrim AI toolkit's AutoMod wrapper with nif-tool (SKYRIM_TOOLKIT, or a skyrim-agents-toolkit clone next to this repo or a parent folder).
 
 Usage: python3 build.py
 """
@@ -22,7 +22,18 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 INPUTS = HERE / "inputs"
 BUILD = HERE / "build"
-TOOLKIT = Path(os.environ.get("SKYRIM_TOOLKIT", "/Volumes/S512/Projects/ETC/skyrim-ai-toolkit"))
+TOOLKIT_REPO = "https://github.com/kxgcayh/skyrim-agents-toolkit"
+
+
+def find_toolkit():
+    """SKYRIM_TOOLKIT if set, else a skyrim-agents-toolkit or skyrim-ai-toolkit folder next to this repo or a parent folder."""
+    if os.environ.get("SKYRIM_TOOLKIT"):
+        return Path(os.environ["SKYRIM_TOOLKIT"])
+    for folder in Path(__file__).resolve().parents:
+        for name in ("skyrim-agents-toolkit", "skyrim-ai-toolkit"):
+            if (folder / name / "tools").is_dir():
+                return folder / name
+    sys.exit(f"Skyrim AI toolkit not found: clone {TOOLKIT_REPO} next to this repo or set SKYRIM_TOOLKIT.")
 OUT_REL = "meshes/bscyrodiil/clutter/signage/bruma"
 BRUMA_TEX = r"textures\bscyrodiil\clutter\signage\bruma"
 ESP = "SMIM-Bruma-Patch.esp"
@@ -55,7 +66,7 @@ def check_inputs():
 
 
 def automod(*args):
-    r = subprocess.run(["bash", str(TOOLKIT / "tools/automod-cli.sh"), "nif", *args, "--json"],
+    r = subprocess.run(["bash", str(find_toolkit() / "tools/automod-cli.sh"), "nif", *args, "--json"],
                        capture_output=True, text=True)
     try:
         d = json.loads(r.stdout)

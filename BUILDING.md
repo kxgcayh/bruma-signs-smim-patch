@@ -14,8 +14,8 @@ AutoMod wrapper, not run.
 ## What you need
 
 - Python 3.9+.
-- The Skyrim AI toolkit with AutoMod CLI v1.11.2 built and `nif-tool` placed (toolkit `docs/installing-tools.md`).
-  Set `SKYRIM_TOOLKIT` to its folder if it is not at the default path in `build.py`.
+- The [Skyrim AI toolkit](https://github.com/kxgcayh/skyrim-agents-toolkit) with AutoMod CLI v1.11.2 built and `nif-tool` placed (toolkit `docs/installing-tools.md`).
+  Clone it next to this repo (or next to a parent folder), or set `SKYRIM_TOOLKIT` to its folder.
 - These three files in `inputs/` (create the folder):
 
 | File in `inputs/` | Where it comes from |
